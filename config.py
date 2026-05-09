@@ -29,16 +29,33 @@ def ativar_descoberta_rede():
         print("Descoberta da Rede ativada com sucesso")
     else:
         print(f"[Erro]{ativResultado.stderr}")
-        print(f"[STDOUT]ativResultado.stdout")
+        print(f"[STDOUT]{ativResultado.stdout}")
+
+
+def compartilhaImpressora():
+    comparImpress = subprocess.run(["Powershell", "-Command", "netsh advfirewall firewall set rule group='Compartilhamento de arquivo e impressora' new enable=yes"],
+                                   capture_output=True,
+                                   text=True,)
+    
+    if comparImpress.returncode == 0:
+        print("Impressora compartilhada com sucesso")
+    else:
+        print(f"[Erro]{comparImpress.stderr}")
+        print(f"[STDOUT]{comparImpress.stdout}")
+
 
 if isAdmin():
     print("Executando como administrador")
     desativar_firewall()
     
     ativar_descoberta_rede()
+
+    compartilhaImpressora()
     
     input("Digite qualquer tecla para sair... ")
+
 else:
+
     print("Solicitando acesso como admin")
     ctypes.windll.shell32.ShellExecuteW(None,
                                     "runas",
