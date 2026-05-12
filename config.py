@@ -1,6 +1,5 @@
 import subprocess
 import ctypes
-import os
 import sys
 
 def isAdmin():
@@ -8,6 +7,7 @@ def isAdmin():
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False        
+
 
 
 def desativar_firewall():
@@ -21,6 +21,8 @@ def desativar_firewall():
         print(f"[Erro]{resultado.stderr}")
         print(resultado.stdout)
 
+
+
 def ativar_descoberta_rede():
     ativResultado = subprocess.run(["powershell", "-Command", "netsh advfirewall firewall set rule group='Descoberta de rede' new enable=Yes"],
                                    capture_output=True,
@@ -30,6 +32,7 @@ def ativar_descoberta_rede():
     else:
         print(f"[Erro]{ativResultado.stderr}")
         print(f"[STDOUT]{ativResultado.stdout}")
+
 
 
 def compartilhaImpressora():
@@ -51,7 +54,7 @@ if isAdmin():
     ativar_descoberta_rede()
 
     compartilhaImpressora()
-    
+
     input("Digite qualquer tecla para sair... ")
 
 else:
