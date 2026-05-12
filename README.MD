@@ -8,17 +8,12 @@ Script Python para automatizar a configuração do ambiente Windows.
 - Ativa descoberta de rede
 - Ativa compartilhamento de arquivo e impressora
 
-## Em desenvolvimento
-
-- Ativar compartilhamento de pasta pública
-- Desativar compartilhamento protegido por senha
-
 ## Como usar
 
 Execute o `config.py` como administrador.
 
 ## Requisitos
 
-- Python 3.8+
-- Windows 10/11(O Python 3.8 foi feito pensando em uma futura versão para Windows 7, com uma configuração legada)
+- Python 3.8.10
+- Windows 10/11(O Python 3.8 foi feito pensando em uma futura versão para Windows 7, com uma configuração legada para o futuro)
 - Executar como administrador
